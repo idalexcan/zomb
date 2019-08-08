@@ -6,7 +6,7 @@ public class Data : MonoBehaviour
 {
     public static Color[] zCol;
     public static string[] zTaste;
-    void Start()
+    void Awake()
     {
         zCol = new Color[3] //registro de colores
         {

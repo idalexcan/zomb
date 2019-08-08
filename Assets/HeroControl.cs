@@ -12,6 +12,8 @@ public class HeroControl : MonoBehaviour
     void Start()
     {
         GetComponent<MeshRenderer>().material.color = Color.black;
+
+        
     }
     void Update()
     {
@@ -32,5 +34,10 @@ public class HeroControl : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         canJump = true;
+        if (collision.transform.name == "zombi")
+        {
+            //Debug.Log(collision.gameObject.GetComponent<sZombie>().col);
+            Debug.Log("hola");
+        }
     }
 }
