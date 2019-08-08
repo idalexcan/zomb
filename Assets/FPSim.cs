@@ -5,7 +5,7 @@ using UnityEngine;
 public class FPSim : MonoBehaviour
 {
     public static float rotY;
-    //
+    
     void Start()
     {
 
