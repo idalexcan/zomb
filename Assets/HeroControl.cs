@@ -6,7 +6,7 @@ public class HeroControl : MonoBehaviour
 {
     public static Vector3 pos;
 
-    public static float speed = Random.Range(1,6);
+    public static float speed = 4;
     bool canJump = false;
 
     void Start()
