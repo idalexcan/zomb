@@ -7,21 +7,31 @@ public class General : MonoBehaviour
     //Data db = new Data();
     public GameObject body;
     //sBody atributes = new sBody();
-    GameObject[] zombies;
+    GameObject[] zombies, citizens;
     Zombies z;
     
     void Start()
     {
-        //z = new Zombies(5, body);
+        
         zombies = new GameObject[Random.Range(0, 6)];
-        //z.AddData();
-        for (int i = 0; i < zombies.Length; i++)
+        citizens = new GameObject[Random.Range(0, 6)];
+
+        for (int i = 0; i < zombies.Length; i++)//ZOMBIES
+
         {
             zombies[i] = GameObject.Instantiate(body) as GameObject;
             zombies[i].transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
-            zombies[i].GetComponent<MeshRenderer>().material.color = Zombies.zCol[Random.Range(0, 3)];
-            zombies[i].AddComponent<Zombies>();
-            zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
+            zombies[i].AddComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)];
+            zombies[i].AddComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
+            zombies[i].GetComponent<MeshRenderer>().material.color = zombies[i].GetComponent<Zombies>().zombie.col;
+        }
+
+        for (int i = 0; i < citizens.Length; i++)
+        {
+            citizens[i] = GameObject.Instantiate(body) as GameObject;
+            citizens[i].transform.position = new Vector3(Random.Range(0, 10), 0, Random.Range(0, 10));
+            citizens[i].AddComponent<Citizen>().citizen.age = Random.Range(15, 101);
+            citizens[i].AddComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
         }
     }
     
@@ -31,12 +41,7 @@ public class General : MonoBehaviour
     }
 }
 
-public struct sBody
-{
-    public string taste;
-    public int age;
-    public string name;
-}
+
 
 //public class General : MonoBehaviour
 //{

@@ -31,13 +31,16 @@ public class HeroControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision col)
     {
         canJump = true;
-        if (collision.transform.name == "zombi")
+        if (col.gameObject.GetComponent<Zombies>())
         {
-            //Debug.Log(collision.gameObject.GetComponent<sZombie>().col);
-            Debug.Log("hola");
+            Debug.Log("aiguantuvreikcfri");
+        }
+        else if (col.gameObject.GetComponent<Citizen>())
+        {
+            Debug.Log("sdagsdyjahygwdhygsa iwachu");
         }
     }
 }

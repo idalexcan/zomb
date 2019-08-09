@@ -6,7 +6,7 @@ public class Zombies : MonoBehaviour
 {
     public static Color[] zCol;
     public static string[] zTaste;
-    public sBody zombie=new sBody();
+    public DataZombies zombie=new DataZombies();
 
     private void Awake()
     {
@@ -30,10 +30,13 @@ public class Zombies : MonoBehaviour
     //{
         
     //}
-
 }
 
-
+public struct DataZombies
+{
+    public Color col;
+    public string taste;
+}
 
 //public class Zombies : MonoBehaviour
 //{
