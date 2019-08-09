@@ -18,9 +18,9 @@ public class Data : MonoBehaviour
         zTaste = new string[5]
         {
             "los páncreas",
-            "los cerebro",
+            "los cerebros",
             "los hígados",
-            "los tumores, o pulmones asmáticos o riñones con cálculos",
+            "los tumores",
             "los aparatos reproductores, xx, xy o lo que sea xd"
         };
     }

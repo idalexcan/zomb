@@ -4,31 +4,58 @@ using UnityEngine;
 
 public class Zombies : MonoBehaviour
 {
-    public sZombie[] zombies;
+    public static Color[] zCol;
+    public static string[] zTaste;
+    public sBody zombie=new sBody();
 
-    public Zombies(int cantZ)
+    private void Awake()
     {
-        zombies = new sZombie[cantZ];
+        zCol = new Color[3] //registro de colores
+        {
+            Color.cyan,
+            Color.magenta,
+            Color.green
+        };
+
+        zTaste = new string[5]
+        {
+            "los páncreas",
+            "los cerebro",
+            "los hígados",
+            "los tumores, o pulmones asmáticos o riñones con cálculos",
+            "los aparatos reproductores, xx, xy o lo que sea xd"
+        };
     }
-
-    public void Create(sZombie zombie, int index, GameObject bodyref)
-    {
-        zombies[index] = zombie;
-        zombies[index].body = GameObject.Instantiate(bodyref) as GameObject;
-        zombies[index].body.transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
-        zombies[index].body.GetComponent<MeshRenderer>().material.color = zombies[index].col;
-        zombies[index].body.transform.name="zombi";
-    }
-
-    void Update()
-    {
+    //public void AddData()
+    //{
         
-    }
+    //}
+
 }
-public struct sZombie 
-{
-    public Color col;
-    public string taste;
-    public GameObject body;
-    public string bodyType;
-}
+
+
+
+//public class Zombies : MonoBehaviour
+//{
+//    public GameObject[] zombies;
+//    sBody zAtributes;
+
+//    public Zombies(int cantZ, GameObject bodyref)
+//    {
+//        zombies = new GameObject[cantZ];
+//        for (int i = 0; i < cantZ; i++)
+//        {
+//            zombies[i] = GameObject.Instantiate(bodyref) as GameObject;
+//            zombies[i].transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
+//            zombies[i].GetComponent<MeshRenderer>().material.color = Data.zCol[Random.Range(0, 3)];
+//            zombies[i].AddComponent<Zombies>();
+//            zombies[i].GetComponent<Zombies>().zAtributes.taste = Data.zTaste[Random.Range(0, 6)];
+//        }
+//    }
+
+//    void Update()
+//    {
+
+//    }
+
+//}

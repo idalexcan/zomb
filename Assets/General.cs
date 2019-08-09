@@ -6,19 +6,22 @@ public class General : MonoBehaviour
 {
     //Data db = new Data();
     public GameObject body;
+    //sBody atributes = new sBody();
+    GameObject[] zombies;
     Zombies z;
-    sZombie sz=new sZombie();
     
-
     void Start()
     {
-        z = new Zombies(5);
-
-        for (int i = 0; i < 3; i++)
+        //z = new Zombies(5, body);
+        zombies = new GameObject[Random.Range(0, 6)];
+        //z.AddData();
+        for (int i = 0; i < zombies.Length; i++)
         {
-            sz.col = Data.zCol[0];
-            sz.taste = Data.zTaste[0];
-            z.Create(sz, i, body);
+            zombies[i] = GameObject.Instantiate(body) as GameObject;
+            zombies[i].transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
+            zombies[i].GetComponent<MeshRenderer>().material.color = Zombies.zCol[Random.Range(0, 3)];
+            zombies[i].AddComponent<Zombies>();
+            zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
         }
     }
     
@@ -28,12 +31,11 @@ public class General : MonoBehaviour
     }
 }
 
-
-
-
-public struct sCitizen
+public struct sBody
 {
-
+    public string taste;
+    public int age;
+    public string name;
 }
 
 //public class General : MonoBehaviour
