@@ -36,11 +36,13 @@ public class HeroControl : MonoBehaviour
         canJump = true;
         if (col.gameObject.GetComponent<Zombies>())
         {
-            Debug.Log("aiguantuvreikcfri");
+            Debug.Log("Waaaarrrrquiero comer "+ col.gameObject.GetComponent<Zombies>().zombie.taste);
+
         }
         else if (col.gameObject.GetComponent<Citizen>())
         {
-            Debug.Log("sdagsdyjahygwdhygsa iwachu");
+            Debug.Log("Holandas! soy " + col.gameObject.GetComponent<Citizen>().citizen.name
+                + " y tengo " + col.gameObject.GetComponent<Citizen>().citizen.age + " años");
         }
     }
 }

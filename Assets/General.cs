@@ -21,8 +21,9 @@ public class General : MonoBehaviour
         {
             zombies[i] = GameObject.Instantiate(body) as GameObject;
             zombies[i].transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
-            zombies[i].AddComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)];
-            zombies[i].AddComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
+            zombies[i].AddComponent<Zombies>();
+            zombies[i].GetComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)]; ;//
+            zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];//
             zombies[i].GetComponent<MeshRenderer>().material.color = zombies[i].GetComponent<Zombies>().zombie.col;
         }
 
@@ -30,8 +31,9 @@ public class General : MonoBehaviour
         {
             citizens[i] = GameObject.Instantiate(body) as GameObject;
             citizens[i].transform.position = new Vector3(Random.Range(0, 10), 0, Random.Range(0, 10));
-            citizens[i].AddComponent<Citizen>().citizen.age = Random.Range(15, 101);
-            citizens[i].AddComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
+            citizens[i].AddComponent<Citizen>();
+            citizens[i].GetComponent<Citizen>().citizen.age = Random.Range(15, 101);
+            citizens[i].GetComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
         }
     }
     
