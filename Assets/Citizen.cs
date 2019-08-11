@@ -15,10 +15,10 @@ public class Citizen : MonoBehaviour
             "Anaximandro Suarez",
             "Mario Alberto Juvenal Ultrasubliminal",
             "Silbestre Changón",
-            "Eggie Huevard Cholesterollinger",
+            "Eggie Huevard Cholesterrollinger",
             "Jean Kratoz Osorio",
             "Lion Scott Calvin",
-            "Jaime Caningas",
+            "Jaime Caningas y quiero Yogurt Light y ver Endgame",
             "La familia del mello sin aurora",
             "Jesús Padre Santo Bendito Adorado Amen",
             "La Virgen de Guadalupe",
@@ -34,13 +34,7 @@ public class Citizen : MonoBehaviour
         };
         
     }
-
-
-
-    void Update()
-    {
-        
-    }
+    
 }
 
 public struct sCitizen

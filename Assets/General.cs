@@ -4,73 +4,81 @@ using UnityEngine;
 
 public class General : MonoBehaviour
 {
-    //Data db = new Data();
     public GameObject body;
-    //sBody atributes = new sBody();
     GameObject[] zombies, citizens;
-    Zombies z;
     
     void Start()
     {
-        
-        zombies = new GameObject[Random.Range(0, 6)];
-        citizens = new GameObject[Random.Range(0, 6)];
+        int limit = Random.Range(9, 21), cantZ=Random.Range(1,limit-1);
+        zombies = new GameObject[cantZ];
+        citizens = new GameObject[limit-cantZ];
 
-        for (int i = 0; i < zombies.Length; i++)//ZOMBIES
+        Debug.Log("zombies:"+zombies.Length);
+        Debug.Log("citizen:" + citizens.Length);
 
+        for (int i = 0; i < zombies.Length; i++)
         {
             zombies[i] = GameObject.Instantiate(body) as GameObject;
-            zombies[i].transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
+            zombies[i].transform.position = new Vector3(Random.Range(2, 50), 0, Random.Range(2, 50));
             zombies[i].AddComponent<Zombies>();
-            zombies[i].GetComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)]; ;//
-            zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];//
+            zombies[i].GetComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)]; ;
+            zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
             zombies[i].GetComponent<MeshRenderer>().material.color = zombies[i].GetComponent<Zombies>().zombie.col;
-        }
+            
+        }//genera los zombies
 
         for (int i = 0; i < citizens.Length; i++)
         {
             citizens[i] = GameObject.Instantiate(body) as GameObject;
-            citizens[i].transform.position = new Vector3(Random.Range(0, 10), 0, Random.Range(0, 10));
+            citizens[i].transform.position = new Vector3(Random.Range(0, 25), 0, Random.Range(0, 25));
             citizens[i].AddComponent<Citizen>();
             citizens[i].GetComponent<Citizen>().citizen.age = Random.Range(15, 101);
             citizens[i].GetComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
-        }
+        }//genera los ciudadanos
+
+        StartCoroutine("AzarMoveVar");//corrutina para controlar movimiento de zombies
     }
-    
+
     void Update()
     {
-        
+        for (int i = 0; i < zombies.Length; i++)
+        {
+            ToMoving(zombies[i], zombies[i].GetComponent<Zombies>().zombie.moveStatus);
+        } 
     }
+
+    IEnumerator AzarMoveVar()
+        //
+    {
+        for (; ; )
+        {
+            for (int i = 0; i < zombies.Length; i++)
+            {
+                zombies[i].GetComponent<Zombies>().zombie.moveStatus = Random.Range(1, 9);
+                yield return new WaitForSeconds(1.5f);
+            }
+        }
+    }
+    void ToMoving(GameObject zomBody, int dir)
+    {
+        switch (dir)
+        {
+            case 1:
+                zomBody.transform.position += zomBody.transform.forward * 0.2f;
+                break;
+            case 2:
+                zomBody.transform.position -= zomBody.transform.forward * 0.2f;
+                break;
+            case 3:
+                zomBody.transform.position += zomBody.transform.right * 0.2f;
+                break;
+            case 4:
+                zomBody.transform.position -= zomBody.transform.right * 0.2f;
+                break;
+            default:
+                break;
+        }
+    }
+
 }
 
-
-
-//public class General : MonoBehaviour
-//{
-//    //Data db = new Data();
-//    public GameObject body;
-//    sZombie[] zombies;
-
-//    void Start()
-//    {
-
-//        zombies = new sZombie[3];//Random.Range(2, 10)
-//        for (int i = 0; i < zombies.Length; i++)
-//        {
-//            zombies[i] = zombies[0];
-//            zombies[i].body = GameObject.Instantiate(body) as GameObject;
-//            zombies[i].body.transform.position = new Vector3(Random.Range(2, 10), 0, Random.Range(2, 10));
-//            zombies[i].body.GetComponent<MeshRenderer>().material.color = Data.zCol[Random.Range(0, 3)];
-//            zombies[i].gusto = Data.zTaste[Random.Range(0, 6)];
-//            Debug.Log("soy un zombie y me gustan " + zombies[i].gusto);
-//            zombies[i].bodyType = "zombi";
-//        }
-//    }
-
-//    void Update()
-//    {
-
-//    }
-
-
-//}

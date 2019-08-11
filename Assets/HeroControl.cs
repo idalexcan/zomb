@@ -6,14 +6,13 @@ public class HeroControl : MonoBehaviour
 {
     public static Vector3 pos;
 
-    public static float speed = 4;
+    public static float speed;
     bool canJump = false;
 
     void Start()
     {
+        speed = Random.Range(2, 7);
         GetComponent<MeshRenderer>().material.color = Color.black;
-
-        
     }
     void Update()
     {
@@ -36,13 +35,15 @@ public class HeroControl : MonoBehaviour
         canJump = true;
         if (col.gameObject.GetComponent<Zombies>())
         {
-            Debug.Log("Waaaarrrrquiero comer "+ col.gameObject.GetComponent<Zombies>().zombie.taste);
+            Debug.Log("Waaaarrrr quiero comer "+ col.gameObject.GetComponent<Zombies>().zombie.taste);
+            
 
         }
         else if (col.gameObject.GetComponent<Citizen>())
         {
             Debug.Log("Holandas! soy " + col.gameObject.GetComponent<Citizen>().citizen.name
                 + " y tengo " + col.gameObject.GetComponent<Citizen>().citizen.age + " años");
+            col.gameObject.GetComponent<MeshRenderer>().material.color = Color.red;
         }
     }
 }
