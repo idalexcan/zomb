@@ -5,14 +5,14 @@ using UnityEngine;
 public class HeroControl : MonoBehaviour
 {
     public static Vector3 pos;
-
+    public Color col;
     public static float speed;
     bool canJump = false;
 
     void Start()
     {
-        speed = Random.Range(2, 7);
-        GetComponent<MeshRenderer>().material.color = Color.black;
+        speed = 12;// Random.Range(3, 9);
+        GetComponent<MeshRenderer>().material.color = col;
     }
     void Update()
     {
@@ -36,8 +36,6 @@ public class HeroControl : MonoBehaviour
         if (col.gameObject.GetComponent<Zombies>())
         {
             Debug.Log("Waaaarrrr quiero comer "+ col.gameObject.GetComponent<Zombies>().zombie.taste);
-            
-
         }
         else if (col.gameObject.GetComponent<Citizen>())
         {
