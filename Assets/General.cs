@@ -13,13 +13,10 @@ public class General : MonoBehaviour
         zombies = new GameObject[cantZ];
         citizens = new GameObject[limit-cantZ];
 
-        Debug.Log("zombies:"+zombies.Length);
-        Debug.Log("citizen:" + citizens.Length);
-
         for (int i = 0; i < zombies.Length; i++)
         {
             zombies[i] = GameObject.Instantiate(body) as GameObject;
-            zombies[i].transform.position = new Vector3(Random.Range(2, 50), 0, Random.Range(2, 50));
+            zombies[i].transform.position = new Vector3(Random.Range(-50, 50), 0, Random.Range(-50, 50));
             zombies[i].AddComponent<Zombies>();
             zombies[i].GetComponent<Zombies>().zombie.col = Zombies.zCol[Random.Range(0, 3)]; ;
             zombies[i].GetComponent<Zombies>().zombie.taste = Zombies.zTaste[Random.Range(0, 5)];
@@ -30,7 +27,7 @@ public class General : MonoBehaviour
         for (int i = 0; i < citizens.Length; i++)
         {
             citizens[i] = GameObject.Instantiate(body) as GameObject;
-            citizens[i].transform.position = new Vector3(Random.Range(0, 25), 0, Random.Range(0, 25));
+            citizens[i].transform.position = new Vector3(Random.Range(-25, 25), 0, Random.Range(-25, 25));
             citizens[i].AddComponent<Citizen>();
             citizens[i].GetComponent<Citizen>().citizen.age = Random.Range(15, 101);
             citizens[i].GetComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
@@ -53,10 +50,12 @@ public class General : MonoBehaviour
         {
             for (int i = 0; i < zombies.Length; i++)
             {
-                zombies[i].GetComponent<Zombies>().state=1; //Random.Range(0, 2)
+                int index = Random.Range(0, 2);
+                zombies[i].GetComponent<Zombies>().state=(Zombies.State)index;//Random.Range(0, 2)
                 zombies[i].GetComponent<Zombies>().zombie.rotY = (Random.Range(0, 360));
-                yield return new WaitForSeconds(5);
+                
             }
+            yield return new WaitForSeconds(5);
         }
     }
     

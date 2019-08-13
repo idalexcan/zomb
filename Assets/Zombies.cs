@@ -9,11 +9,11 @@ public class Zombies : MonoBehaviour
         idle,
         move
     }
-
+    public State state;
     public static Color[] zCol;
     public static string[] zTaste;
     public DataZombies zombie=new DataZombies();
-    public State state;
+    
 
     private void Awake()
     {
@@ -49,29 +49,16 @@ public class Zombies : MonoBehaviour
         switch (s)
         {
             case State.idle:
-                Debug.Log("move");
                 break;
             case State.move:
-                Debug.Log("move");
                 float dir = zombie.GetComponent<Zombies>().zombie.rotY;
-                zombie.transform.position += zombie.transform.forward;
+                zombie.transform.position += zombie.transform.forward / 10;
+                zombie.transform.eulerAngles = new Vector3(0, dir, 0);
                 break;
             default:
                 break;
         }
     }
-
-    //IEnumerator AzarDir()
-    //{
-        
-    //    for (;;)
-    //    {
-    //        for (int i = 0; i < General.zombies.Length; i++)
-    //        {
-    //            General.zombies[i].GetComponent<Zombies>().zombie.moveStatus=
-    //        }
-    //    }
-    //}
 }
 
 public struct DataZombies

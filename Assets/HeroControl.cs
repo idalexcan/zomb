@@ -11,7 +11,7 @@ public class HeroControl : MonoBehaviour
 
     void Start()
     {
-        speed = 12;// Random.Range(3, 9);
+        speed =  Random.Range(3, 7);
         GetComponent<MeshRenderer>().material.color = col;
     }
     void Update()
