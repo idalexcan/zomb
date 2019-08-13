@@ -6,7 +6,7 @@ public class General : MonoBehaviour
 {
     public GameObject body;
     public static GameObject[] zombies, citizens;
-    
+    public Color CityColor;
     void Start()
     {
         int limit = Random.Range(9, 21), cantZ=Random.Range(1,limit-1);
@@ -31,6 +31,7 @@ public class General : MonoBehaviour
             citizens[i].AddComponent<Citizen>();
             citizens[i].GetComponent<Citizen>().citizen.age = Random.Range(15, 101);
             citizens[i].GetComponent<Citizen>().citizen.name = Citizen.cNames[Random.Range(0, 20)];
+            citizens[i].GetComponent<MeshRenderer>().material.color = CityColor;
         }//genera los ciudadanos
 
         StartCoroutine("AzarMoveVar");
@@ -51,9 +52,8 @@ public class General : MonoBehaviour
             for (int i = 0; i < zombies.Length; i++)
             {
                 int index = Random.Range(0, 2);
-                zombies[i].GetComponent<Zombies>().state=(Zombies.State)index;//Random.Range(0, 2)
+                zombies[i].GetComponent<Zombies>().state=(Zombies.State)index;
                 zombies[i].GetComponent<Zombies>().zombie.rotY = (Random.Range(0, 360));
-                
             }
             yield return new WaitForSeconds(5);
         }

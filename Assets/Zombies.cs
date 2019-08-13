@@ -9,6 +9,7 @@ public class Zombies : MonoBehaviour
         idle,
         move
     }
+
     public State state;
     public static Color[] zCol;
     public static string[] zTaste;
