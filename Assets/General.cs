@@ -58,49 +58,6 @@ public class General : MonoBehaviour
             yield return new WaitForSeconds(5);
         }
     }
-    
-
 }
 
-
-//void Update()
-//{
-//    for (int i = 0; i < zombies.Length; i++)
-//    {
-//        ToMoving(zombies[i], zombies[i].GetComponent<Zombies>().zombie.moveStatus);
-//    }
-//}
-
-//IEnumerator AzarMoveVar()
-////
-//{
-//    for (; ; )
-//    {
-//        for (int i = 0; i < zombies.Length; i++)
-//        {
-//            zombies[i].GetComponent<Zombies>().zombie.moveStatus = Random.Range(1, 9);
-//            yield return new WaitForSeconds(1.5f);
-//        }
-//    }
-//}
-//void ToMoving(GameObject zomBody, int dir)
-//{
-//    switch (dir)
-//    {
-//        case 1:
-//            zomBody.transform.position += zomBody.transform.forward * 0.2f;
-//            break;
-//        case 2:
-//            zomBody.transform.position -= zomBody.transform.forward * 0.2f;
-//            break;
-//        case 3:
-//            zomBody.transform.position += zomBody.transform.right * 0.2f;
-//            break;
-//        case 4:
-//            zomBody.transform.position -= zomBody.transform.right * 0.2f;
-//            break;
-//        default:
-//            break;
-//    }
-//}
 
